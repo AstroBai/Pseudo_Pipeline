@@ -53,9 +53,9 @@ savename = 'TrainN%s_PCA%s_ScaleNodes%s' %(NumNodes,Perform_PCA,Scale_Nodes)
 
 
 ###### CONVERSION OF THE INPUT STATISTIC TO EMULATED ONE: IN THIS CASE, TAKING THE LOG ######
-#Train_ErrPred = ((1./Train_Pred)*Train_ErrPred)  
-#Train_Pred = np.log(Train_Pred)
-#Trial_Pred = np.log(Trial_Pred)
+Train_ErrPred = ((1./Train_Pred)*Train_ErrPred)  
+Train_Pred = np.log(Train_Pred)
+Trial_Pred = np.log(Trial_Pred)
 
 
 # PCA?
@@ -118,7 +118,8 @@ if Run_Trial:
 	else:
 		GP_Pred = np.copy(GP_AVOUT)
 		GP_ErrPred = np.copy(GP_STDOUT)
-
+	GP_Pred = np.exp(GP_Pred)
+	Trial_Pred = np.exp(Trial_Pred)
 	# Save pickled GP predictions & accuracies plus a datafile containing corresponding x-array	
 	np.save(savedir + 'GPPred_' + savename, GP_Pred)
 	np.save(savedir + 'GPAcc_'  + savename, GP_Pred/Trial_Pred)

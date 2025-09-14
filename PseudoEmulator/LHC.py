@@ -15,8 +15,8 @@ from matplotlib import rc
 import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 
-overall_DIR = 'Training_Set'
-#overall_DIR = 'Trial_Set'
+#overall_DIR = 'Training_Set'
+overall_DIR = 'Trial_Set'
 
 Read_Optimal_LHC = False		#If False, it will make an LHC. If True it'll read in an Optimal
 Optimise_ED = False 		# If True, it will cycle through experimental designs (EDs)
@@ -26,12 +26,12 @@ EDs = range(200)			# IDs of the EDs it will cycle though if Optimise_ED is True
 CPrior = "Final"			# Range of cosmology nodes. MiraTitan is wider than Planck18
 		#MiraTitan
 Basis = "Mixed"			# Read these basis functions: "Mixed" or "GPCurves"
-Data = "Ultimate"			# What scaling of the weight nodes to use. 
+Data = "Ultimate12.5"			# What scaling of the weight nodes to use. 
                                         # "LCDM" will use the "Ultimate" scaling, but manually set un-scaled weights dimensions to 0.
-Narrow_Range = False			# THIS IS THE VARIABLE THAT THE CODE NOW USES TO FIGURE OUT IF IT SHOULD NARROW PRIOR RANGE
+Narrow_Range = True			# THIS IS THE VARIABLE THAT THE CODE NOW USES TO FIGURE OUT IF IT SHOULD NARROW PRIOR RANGE
 
-Seed=1 #int(sys.argv[1]) #1
-Nodes = 50
+Seed=2 #int(sys.argv[1]) #1
+Nodes = 200
 Mx = 1.0   			# Generate this fraction X Nodes to overcompensate for shapes that may come out negative.
 cosmol_dim = 5
 weight_dim = 8 		
@@ -305,6 +305,7 @@ for i in range(dimensions):
 	else:
 		FMT += '%.7f '
 
+directory = overall_DIR
 if not os.path.exists(overall_DIR + '/Nodes'):
         os.makedirs(directory + '/Nodes')
         os.makedirs(directory + '/Shapes')

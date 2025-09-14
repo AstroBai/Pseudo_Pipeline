@@ -36,7 +36,7 @@ else:
 # PARAMS TO SET
 CPrior = "Final"	# Range of cosmology nodes. MiraTitan is wider than Planck18
 Basis = "Mixed"		# Read these basis functions... 
-Data = "Ultimate"		# ...and project them with these curves,... 
+Data = "Ultimate12.5"		# ...and project them with these curves,... 
 						# ...to get acceptable range of weights
 
 Redshift = ['0.000']																	# USE THIS FOR A SINGLE REDSHIFT
@@ -47,7 +47,7 @@ cosmol_dim = 5
 weight_dim = 8
 wiggle_dim = 0
 dimensions = cosmol_dim + weight_dim + wiggle_dim
-Seed=1         #sys.argv[1]		 # 2 for trial, 1 for training	
+Seed=2         #sys.argv[1]		 # 2 for trial, 1 for training	
 Mx="1.0" 		# "1.0" for trial, "Optimal" for training			
 
 OnAGrid = False 			# Set True if making predictions for the trial grids, False if for regular trial set
@@ -55,8 +55,8 @@ if OnAGrid:
 	DIR = 'Training_Set/TwoD_Grids/Dim0-1_Ommh2-Ombh2/Resolution50/' 
 	Nodes = 2500
 else:
-	DIR = 'Training_Set' # 'Trial_Set'
-	Nodes = 50
+	DIR = 'Trial_Set' #'Training_Set' # 'Trial_Set'
+	Nodes = 200
 
 
 # 27/05/2019: Want to make a training set optimised in 13D, NOT 15D.

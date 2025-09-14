@@ -3,18 +3,18 @@
 # ... and generate the CAMB predictions.
 # SPEED = 1500 nodes (LCDM & NLCDM) PER HR
 
-Seed=1 #2 #1
+Seed=2 #2 #1
 Mx="1.0"
 CPrior="Final"		# Range of cosmology nodes. MiraTitan is wider than Planck18
 Basis="Mixed"		# Read these basis functions... 
-Data="Ultimate"		# ...and project them with these curves,... 
+Data="Ultimate12.5"		# ...and project them with these curves,... 
 						# ...to get acceptable range of weights
 
 Redshift=(0.000) # 1.000)																	# USE THIS FOR A SINGLE REDSHIFT
 #mapfile < Training_Set/Redshifts_0-2_41.dat		# USE THIS... 
 #Redshift=${MAPFILE[*]}																# ...AND THIS FOR MULTIPLE REDSHIFTS
 
-Nodes=50	
+Nodes=200	
 cosmol_dim=5
 weight_dim=8
 wiggle_dim=0
@@ -40,8 +40,8 @@ Nodes_Label=${Nodes}
 
 
 # !!! IMPORTANT LINE - WHERE THE OUTPUT IS GOING !!!
-DIR=${PWD}/Training_Set/ 
-#DIR=${PWD}/Trial_Set/
+#DIR=${PWD}/Training_Set/ 
+DIR=${PWD}/Trial_Set/
 #DIR=${PWD}/Training_Set/Optimisation/Seed${Seed}Mx${Mx}_CP${CPrior}_BF${Basis}-Data${Data}/nu0.19/
 
 # Nodes file

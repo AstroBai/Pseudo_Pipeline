@@ -794,6 +794,7 @@ class Diagnostic_Plots:
 		plt.xscale('log')
 		plt.xlim([self.x.min(), self.x.max()])
 		plt.ylim([FD.min(), FD.max()])
+		#plt.ylim([-0.5, 0.5])
 		plt.xlabel(r'$x$')
 		plt.ylabel(r'(GP - Data) / Data')
 		plt.savefig(savename)
