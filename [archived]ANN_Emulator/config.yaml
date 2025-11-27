@@ -1,0 +1,28 @@
+DataParam:
+  Training_ParamPath: /home/jbai/cosmology/ann_gp/Pseudo_Pipeline/PseudoEmulator/Training_Set/Nodes/Seed1Mx1.0_CPFinal_BFMixed-DataUltimate_Nodes200_Dim13.dat
+  Training_DataPath: /home/jbai/cosmology/ann_gp/Pseudo_Pipeline/PseudoEmulator/Training_Set/Predictions/z0.000/Ratio_Seed1Mx1.0_CPFinal_BFMixed-DataUltimate_IDAllof200.npy
+  Trial_ParamPath: /home/jbai/cosmology/ann_gp/Pseudo_Pipeline/PseudoEmulator/Trial_Set/Nodes/Seed2Mx1.0_CPFinal_BFMixed-DataUltimate12.5_Nodes200_Dim13.dat
+  Trial_DataPath: /home/jbai/cosmology/ann_gp/Pseudo_Pipeline/PseudoEmulator/Trial_Set/Predictions/z0.000/Ratio_Seed2Mx1.0_CPFinal_BFMixed-DataUltimate12.5_IDAllof200.npy
+  Do_Log: True # Whether to take the logarithm of the data
+
+ANNParam:
+  Device: 'cpu' # 'cuda' or 'cpu'
+  Scale_Params: True # Whether to scale input parameters to [0, 1]
+  Use_PCA: True # Whether to use PCA for dimensionality reduction
+  N_PCA_Components: 16 # Number of PCA components to retain if Use_PCA is
+  S_Hidden: [24, 20] # Number of nodes in each hidden layer
+  Activation: 'silu' # Activation function: 'tanh', 'relu', 'sigmoid', 'linear', 'gelu', 'silu (current best)'
+  Step_LR: True # Whether to use step learning rate
+  Initial_LR: 0.01 # Initial learning rate
+  Step_Size: 100 # Step size for learning rate decay
+  Gamma: 0.1 # Learning rate decay factor
+  Max_Epochs: 100000 # Maximum number of epochs
+  Early_Stopping: True # Whether to use early stopping
+  Patience: 10 # Patience for early stopping
+  Min_Delta: 1e-6 # Minimum change to qualify as an improvement
+  Dropout: 0 # Dropout rate (0.0 means no dropout)
+  Weight_Decay: 1e-5 # Weight decay (L2 regularization)
+  Plot_Loss: True # Whether to plot the loss curve
+
+OutputParam:
+  Model_SavePath: ./Models/ # Path to save trained models

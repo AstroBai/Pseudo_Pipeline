@@ -792,13 +792,33 @@ class Diagnostic_Plots:
 			plt.errorbar( self.x, FD[i,:], yerr=abs(errFD[i,:]) )
 		#plt.plot([self.x.min(),self.x.max()], [0.,0.], 'k--')
 		plt.xscale('log')
-		plt.xlim([self.x.min(), self.x.max()])
-		plt.ylim([FD.min(), FD.max()])
+		#plt.xlim([self.x.min(), self.x.max()])
+		#plt.ylim([FD.min(), FD.max()])
 		#plt.ylim([-0.5, 0.5])
-		plt.xlabel(r'$x$')
-		plt.ylabel(r'(GP - Data) / Data')
+		plt.xlabel(r'$k \mathrm{[h/Mpc]}$')
+		plt.ylabel(r'Relative Error')
+		plt.grid()
 		plt.savefig(savename)
-		plt.show()
+		plt.close()
+		# Cumulative histogram of maximum absolute relative error
+		eps = []
+		for fd in FD:
+			eps.append( max( abs(fd) ) )
+		eps = np.array(eps) * 100.
+		plt.figure(figsize=(8,6))
+		plt.hist(eps, bins=100, cumulative=True, density=True, histtype='step', label='Cumulative Histogram' )
+		plt.xlabel(r'Absolute Relative Error [%]')
+		plt.ylabel(r'Fraction of points')
+		plt.xlim([0.1, 10])
+		plt.ylim([0., 1.])
+		plt.xscale('log')
+		plt.grid()
+		plt.legend()
+		plt.savefig(savename.split('.png')[0]+'_CumHist.png', dpi=300)
+		plt.close()
+		# save some data to npy
+		np.save(savename.split('.png')[0]+'_errs.npy', FD)
+		print('shape of err array: ', FD.shape)
 		return
 
 

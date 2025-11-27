@@ -40,7 +40,7 @@ TrainErrFile =
 alpha = None					# Noise term. Const value added to diagonal of kernel in Scikit-learn. 
 						# If set, this is used INSTEAD of errors in TrainErrFile
 
-Scale_Nodes = False				# Scale the training nodes to be in range [0,1]. 
+Scale_Nodes = True				# Scale the training nodes to be in range [0,1]. 
 						# If True it will scale Trial Nodes by the range of the Training Nodes.
 
 
